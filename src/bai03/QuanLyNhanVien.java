@@ -9,8 +9,6 @@ public class QuanLyNhanVien {
     private static CongTy congTy = new CongTy("ABC Technology");
     
     public static void main(String[] args) {
-        themDuLieuMau();
-        
         int luaChon;
         do {
             hienThiMenu();
@@ -23,7 +21,7 @@ public class QuanLyNhanVien {
 					themDuLieuMau();
 					break;
                 case 2:
-                    themNhanVienMoi();
+                    congTy.themNhanVienMoi();
                     break;
                 case 3:
                     congTy.hienThiDanhSachNhanVien();
@@ -48,39 +46,6 @@ public class QuanLyNhanVien {
         System.out.println("4. Hiển thị bảng lương");
         System.out.println("0. Thoát");
         System.out.println("=====================================");
-    }
-    
-    private static void themNhanVienMoi() {
-        System.out.println("\n=== THÊM NHÂN VIÊN MỚI ===");
-        System.out.print("Nhập họ tên: ");
-        String hoTen = scanner.nextLine();
-        
-        System.out.print("Nhập ngày sinh (dd/MM/yyyy): ");
-        String ngaySinhStr = scanner.nextLine();
-        LocalDate ngaySinh = LocalDate.parse(ngaySinhStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        
-        System.out.print("Nhập lương cơ bản: ");
-        double luongCanBan = scanner.nextDouble();
-        
-        System.out.println("Chọn loại nhân viên:");
-        System.out.println("1. Nhân viên sản xuất");
-        System.out.println("2. Nhân viên văn phòng");
-        System.out.print("Lựa chọn: ");
-        int loai = scanner.nextInt();
-        
-        if (loai == 1) {
-            System.out.print("Nhập số sản phẩm: ");
-            int soSanPham = scanner.nextInt();
-            NhanVienSanXuat nvsx = new NhanVienSanXuat(hoTen, ngaySinh, luongCanBan, soSanPham);
-            congTy.themNhanVien(nvsx);
-        } else if (loai == 2) {
-            System.out.print("Nhập số ngày làm việc: ");
-            int soNgayLamViec = scanner.nextInt();
-            NhanVienVanPhong nvvp = new NhanVienVanPhong(hoTen, ngaySinh, luongCanBan, soNgayLamViec);
-            congTy.themNhanVien(nvvp);
-        } else {
-            System.out.println("Lựa chọn không hợp lệ!");
-        }
     }
     
     private static void themDuLieuMau() {
